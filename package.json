@@ -6,12 +6,11 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "@tiptap/core": "^3.0.0",
-    "@tiptap/starter-kit": "^3.0.0",
-    "@tiptap-pro/extension-collaboration": "^3.0.0",
-    "@tiptap-pro/extension-collaboration-cursor": "^3.0.0",
-    "@tiptap-pro/extension-content-ai": "^3.0.0",
-    "yjs": "^13.5.27",
-    "y-websocket": "^1.4.5"
+    "@tiptap/core": "3.0.0-beta.248",
+    "@tiptap/starter-kit": "3.0.0-beta.248",
+    "@tiptap/extension-collaboration": "3.0.0-beta.21",
+    "@tiptap/extension-collaboration-cursor": "3.0.0-beta.9",
+    "yjs": "^13.6.9",
+    "y-websocket": "^1.5.10"
   }
 }
