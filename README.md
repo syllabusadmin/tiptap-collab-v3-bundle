@@ -17,7 +17,7 @@ npm install
 npm start
 ```
 
-The server will run on `PORT` (defaults to `3000`) and serve the files in `railway-app/public`.
+The server will run on `PORT` (defaults to `8080`) and serve the files in `railway-app/public`.
 
 ## Environment Variables
 
