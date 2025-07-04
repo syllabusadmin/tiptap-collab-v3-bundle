@@ -1,6 +1,6 @@
 # Tiptap Railway Example
 
-This repository contains a simple Express server located in `railway-app`. The server serves a demo editor and exposes configuration values via `/env` for the front end.
+This repository contains a simple Express server located in `railway-app`. The server serves a demo editor and exposes configuration values via `/env` for the front end. A `/token` endpoint is available to generate JWTs for the collaboration service.
 
 ## Getting Started
 
@@ -23,9 +23,13 @@ The server will run on `PORT` (defaults to `3000`) and serve the files in `railw
 
 Create a `.env` file in `railway-app` based on `.env.example` with the following entries:
 
-- `COLLABORATION_KEY` – JWT used for collaboration
 - `CONTENT_AI_KEY` – API key for content AI
-- `SERVER_KEY` – key for authenticating the websocket provider
+- `APP_ID` – id of your Tiptap application
+- `CONVERSION_KEY` – key for the conversion service
+- `REGISTRY_TOKEN` – token for installing private packages
+- `SERVER_ID` – id of your collaboration server
+- `SERVER_KEY` – secret used to sign collaboration tokens
+- `DOC_API_KEY` – key for accessing the document API
 - `SERVER_ADDRESS` – websocket address (e.g. `wss://collab.tiptap.dev`)
 - `PORT` – optional port for the Express server
 
