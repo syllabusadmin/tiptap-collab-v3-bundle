@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.editor {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  min-height: 300px;
+}

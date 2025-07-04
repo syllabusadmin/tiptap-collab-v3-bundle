@@ -1,0 +1,7 @@
+{
+  "name": "tiptap-railway-app",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}
