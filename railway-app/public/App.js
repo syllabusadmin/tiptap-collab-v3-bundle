@@ -4,7 +4,13 @@ export default function App() {
   const editorContainer = useRef(null)
   const envRef = useRef(null)
   const editorRef = useRef(null)
-  const [docId, setDocId] = useState(() => window.location.hash.slice(1))
+  const [docId, setDocId] = useState(() => {
+    const existing = window.location.hash.slice(1)
+    if (existing) return existing
+    const id = Math.random().toString(36).slice(2, 10)
+    window.location.hash = id
+    return id
+  })
   const [envLoaded, setEnvLoaded] = useState(false)
 
   useEffect(() => {
