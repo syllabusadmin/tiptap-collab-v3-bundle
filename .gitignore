@@ -1,3 +1,6 @@
-node_modules/\ndist/\n.env
-.npmrc  
+node_modules/
+dist/
+.env
+railway-app/.env
+.npmrc
 localnotes.txt
