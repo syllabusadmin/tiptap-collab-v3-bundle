@@ -31,8 +31,12 @@ export default function App() {
     const { WebsocketProvider } = await import('https://esm.sh/y-websocket@1?bundle')
 
     const ydoc = new Y.Doc()
+
+    const tokenRes = await fetch(`/token?docId=${id}`)
+    const { token } = await tokenRes.json()
+
     const provider = new WebsocketProvider(envRef.current.SERVER_ADDRESS, id, ydoc, {
-      params: { key: envRef.current.SERVER_KEY, token: envRef.current.COLLABORATION_KEY }
+      params: { key: envRef.current.SERVER_KEY, token }
     })
 
     editorRef.current = new Editor({
