@@ -1,78 +1,39 @@
-# Tiptap v3 Bundle for Bubble (with Pro Extensions)
+# Tiptap Railway Example
 
-This project bundles Tiptap v3 with Collaboration, Cursor, and Content-AI extensions into a browser-compatible script for use in environments like Bubble.io.
+This repository contains a simple Express server located in `railway-app`. The server serves a demo editor and exposes configuration values via `/env` for the front end.
 
-## ✅ Features
-- Tiptap v3 core
-- StarterKit (basic formatting, headings, etc.)
-- Collaboration (Yjs + WebSocket sync)
-- Collaboration Cursor (multi-user awareness)
-- Content AI (automated suggestions via OpenAI)
+## Getting Started
 
-## 🧱 Prerequisites
-- Node.js ≥ 16
-- Tiptap Pro access token (TIPTAP_PRO_TOKEN)
+1. Install dependencies:
 
-## 📦 Setup
-1. Clone this repo:
 ```bash
-git clone https://github.com/YOUR_USERNAME/tiptap-collab-v3-bundle.git
-cd tiptap-collab-v3-bundle
-```
-
-2. Authenticate to install Pro extensions:
-```bash
-npm config set //npm.pkg.github.com/:_authToken=<TIPTAP_PRO_TOKEN>
+cd railway-app
 npm install
 ```
 
-3. Build the bundle:
+2. Start the server:
+
 ```bash
-npm run build
+npm start
 ```
 
-4. Upload `dist/tiptap-collab-v3.js` to a public host (e.g. Bubble plugin assets, GitHub Pages, Cloudflare).
+The server will run on `PORT` (defaults to `3000`) and serve the files in `railway-app/public`.
 
-## 🧩 Use in Bubble Plugin
-1. Add this script to your plugin’s Shared Resources:
-```html
-<script src="https://yourdomain.com/tiptap-collab-v3.js"></script>
+## Environment Variables
+
+Create a `.env` file in `railway-app` based on `.env.example` with the following entries:
+
+- `COLLABORATION_KEY` – JWT used for collaboration
+- `CONTENT_AI_KEY` – API key for content AI
+- `SERVER_KEY` – key for authenticating the websocket provider
+- `SERVER_ADDRESS` – websocket address (e.g. `wss://collab.tiptap.dev`)
+- `PORT` – optional port for the Express server
+
+## Project Structure
+
 ```
-
-2. In your plugin element code:
-```js
-const { Editor, StarterKit, Collaboration, CollaborationCursor, ContentAI, Y, WebsocketProvider } = window.TiptapCollabV3;
-
-const div = document.createElement("div");
-div.style.minHeight = "200px";
-instance.canvas.appendChild(div);
-
-const ydoc = new Y.Doc();
-const provider = new WebsocketProvider("wss://collab.tiptap.dev", "doc-id", ydoc, {
-  params: { token: instance.data.jwt }
-});
-
-const editor = new Editor({
-  element: div,
-  extensions: [
-    StarterKit,
-    Collaboration.configure({ document: ydoc }),
-    CollaborationCursor.configure({ provider }),
-    ContentAI.configure({ apiKey: "your-openai-key" })
-  ],
-  content: instance.data.initialContent || "",
-  onUpdate: ({ editor }) => instance.publishState("html", editor.getHTML())
-});
-
-instance.data.editor = editor;
+railway-app/
+  public/         # client files
+  server.js       # Express server
+  package.json    # dependencies
 ```
-
-3. Create plugin actions to generate JWT via `jsonwebtoken` in server-side plugin code.
-
-## ✨ Extras
-- You can expand with Pro Tables, Mentions, Placeholders, etc.
-- Add dropdown UI to trigger Content-AI suggestions.
-- Securely manage OpenAI and Tiptap API keys.
-
----
-Let me know if you want this published to a real GitHub repo or want a working demo in Bubble!
