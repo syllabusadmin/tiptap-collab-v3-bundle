@@ -10,3 +10,18 @@ body {
   border: 1px solid #ccc;
   min-height: 300px;
 }
+
+.controls {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.controls input {
+  margin-right: 0.5rem;
+  padding: 0.25rem;
+}
+
+.controls button {
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
